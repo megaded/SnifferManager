@@ -32,7 +32,7 @@ namespace SnifferManager.Controllers
         }
 
         [HttpPost]
-        [Route("config/add")]
+        [Route("config/serialnumber")]
         public ActionResult Create(ConfigurationViewModel model)
         {
             var entity = new Configuration();
@@ -41,7 +41,7 @@ namespace SnifferManager.Controllers
             entity.SerialNumber = ++lastSerialNumber;
             context.Configurations.Add(entity);
             context.SaveChanges();
-            return RedirectToAction("Index");
+            return PartialView("SerialNumber", entity.SerialNumber);
         }
     }
 }

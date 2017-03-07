@@ -1,11 +1,14 @@
 ﻿@model SnifferManager.Models.ViewModel.ConfigurationViewModel
 
 
-@using (Html.BeginForm("Create", "Configuration", FormMethod.Post))
+@using (Ajax.BeginForm("config/serialnumber", new AjaxOptions {  UpdateTargetId="snumber"}))
 {
-    @Html.Label("Название");
-    @Html.EditorFor(x => x.Name);
-    @Html.Label("Серийник");
-    @Html.EditorFor(x => x.SerialNumber);
-    <input type="submit" value="Добавить"/>
+    <div class="form-group form-group-lg">
+        @Html.Label("Название", new { @class = "col-sm-2 control-label" })
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Введите название арендатора" })
+        <input type="submit" value="Добавить" />
+    </div>
 }
+<div id="snumber">
+
+</div>
