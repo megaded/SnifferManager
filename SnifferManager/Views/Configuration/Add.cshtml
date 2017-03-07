@@ -1,0 +1,11 @@
+﻿@model SnifferManager.Models.ViewModel.ConfigurationViewModel
+
+
+@using (Html.BeginForm("Create", "Configuration", FormMethod.Post))
+{
+    @Html.Label("Название");
+    @Html.EditorFor(x => x.Name);
+    @Html.Label("Серийник");
+    @Html.EditorFor(x => x.SerialNumber);
+    <input type="submit" value="Добавить"/>
+}

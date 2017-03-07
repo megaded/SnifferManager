@@ -1,0 +1,18 @@
+﻿@model List<Configuration>
+    <table>
+        <thead>
+            <tr>
+                <td>SerialNumber</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var config in Model)
+            {
+                <tr>
+                    <td>@config.SerialNumber</td>
+                    <td>@config.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>

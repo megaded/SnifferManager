@@ -1,0 +1,24 @@
+﻿@model List<SnifferManager.Models.ViewModel.CheckViewModel>
+    <table>
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>SerialNumber</td>
+                <td>CheckText</td>
+                <td>CheckDate</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var check in Model)
+            {
+                <tr>
+                    <td>@check.id</td>
+                    <td>@check.LocationName</td>
+                    <td>@check.SerialNumber</td>
+                    <td>@check.CheckText</td>
+                    <td>@check.CheckDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
