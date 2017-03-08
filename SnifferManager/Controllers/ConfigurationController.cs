@@ -15,33 +15,27 @@ namespace SnifferManager.Controllers
         {
             context = new DeviceDbContext();
         }
-
-        [HttpGet]    
-        [Route("config/all")]   
+        [HttpGet]           
         public ActionResult Index()
         {
             var model = context.Configurations.ToList();
             return View(model);
         }
-
-        [HttpGet]   
-        [Route("config/add")]   
+        [HttpGet]          
         public ActionResult Add()
         {
             return View();
         }
-
-        [HttpPost]
-        [Route("config/serialnumber")]
-        public ActionResult Create(ConfigurationViewModel model)
+        [HttpPost]        
+        public ActionResult Create(string name)
         {
             var entity = new Configuration();
-            entity.Description = model.Name;
+            entity.Description = name;
             var lastSerialNumber=context.Configurations.Max(x => x.SerialNumber);
             entity.SerialNumber = ++lastSerialNumber;
             context.Configurations.Add(entity);
             context.SaveChanges();
-            return PartialView("SerialNumber", entity.SerialNumber);
+            return PartialView("SerialNumber", entity.SerialNumber.ToString());
         }
     }
 }

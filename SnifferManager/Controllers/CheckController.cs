@@ -7,7 +7,7 @@ using SnifferManager.Models.ViewModel;
 
 namespace SnifferManager.Controllers
 {
-    [RoutePrefix("check")]
+   
     public class CheckController : Controller
     {
         DeviceDbContext context;
