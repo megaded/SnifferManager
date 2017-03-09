@@ -90,3 +90,7 @@ C:\Users\Евгений\documents\visual studio 2015\Projects\SnifferManager\Sni
 C:\Users\Евгений\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\obj\Debug\SnifferManager.csprojResolveAssemblyReference.cache
 C:\Users\Евгений\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\obj\Debug\SnifferManager.dll
 C:\Users\Евгений\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\obj\Debug\SnifferManager.pdb
+C:\Users\IEUser\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\bin\PagedList.dll
+C:\Users\IEUser\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\bin\PagedList.Mvc.dll
+C:\Users\IEUser\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\bin\PagedList.xml
+C:\Users\IEUser\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\bin\PagedList.Mvc.xml

@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace SnifferManager.Controllers
+{
+    public class LogMessageTypesController : Controller
+    {
+        // GET: LogMessageTypes
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}

@@ -15,7 +15,7 @@ namespace SnifferManager
             routes.MapRoute(
            "Default",                                             
            "{controller}/{action}",                         
-           new { controller = "Configuration", action = "Index" }           
+           new { controller = "Location", action = "Index" }           
        );
 
         }

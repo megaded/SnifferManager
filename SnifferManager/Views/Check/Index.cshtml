@@ -1,12 +1,18 @@
-﻿@model List<SnifferManager.Models.ViewModel.CheckViewModel>
-    <table>
+﻿@model PagedList.IPagedList<SnifferManager.Models.ViewModel.CheckViewModel>
+@using PagedList.Mvc;
+    <table class="table">
         <thead>
             <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>SerialNumber</td>
-                <td>CheckText</td>
-                <td>CheckDate</td>
+                <th>Id</th>
+                <th>Номер документа</th>
+                <th>Арендатор</th>
+                <th>SerialNumber</th>
+                <th>Номер чека</th>
+                <th>Дата чека</th>
+                <th>Получен</th>
+                <th>Оплачено</th>
+                <th>Итог</th>
+                <th>Чек</th>
             </tr>
         </thead>
         <tbody>
@@ -14,11 +20,17 @@
             {
                 <tr>
                     <td>@check.id</td>
+                    <td>@check.DocNumber</td>
                     <td>@check.LocationName</td>
-                    <td>@check.SerialNumber</td>
-                    <td>@check.CheckText</td>
+                    <td>@check.SerialNumber</td>    
+                    <td>@check.CheckNumber</td>                
                     <td>@check.CheckDate</td>
+                    <td>@check.ReceiveDate</td>
+                    <td>@check.Payment</td>
+                    <td>@check.Total</td>
+                    <td>@check.CheckText</td>
                 </tr>
             }
         </tbody>
     </table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

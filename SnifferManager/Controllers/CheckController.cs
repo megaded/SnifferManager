@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SnifferManager.Models.ViewModel;
+using PagedList;
 
 namespace SnifferManager.Controllers
 {
@@ -16,7 +17,7 @@ namespace SnifferManager.Controllers
             context = new DeviceDbContext();
         }
         [HttpGet]       
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var check = context.Checks.ToList();
             var config = context.Configurations.ToList();
@@ -36,7 +37,9 @@ namespace SnifferManager.Controllers
                 ReceiveDate=x.ReceiveDate,
                 CheckText=x.CheckText
             }).ToList();
-            return View(model);
+            var pageNumber = page ?? 1;
+            var onePageOfCheck = model.ToPagedList(pageNumber, 100);
+            return View(onePageOfCheck);
         }
     }
 }

@@ -1,0 +1,25 @@
+﻿@model List<SnifferManager.Models.ViewModel.ConfigurationViewModel>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Список арендаторов
+    </div>
+    <div class="panel-body">
+
+        <div class="list-group">
+
+            @foreach (var location in Model)
+            {
+                if (String.IsNullOrEmpty(location.Name))
+                {
+                    @Html.ActionLink("Название отсутствует"+" "+location.SerialNumber , "Detail", new { id = location.SerialNumber }, new { @class = "list-group-item" })
+                }
+                else
+                {
+                    @Html.ActionLink(location.Name+" "+ location.SerialNumber, "Detail", new { id = location.SerialNumber }, new { @class = "list-group-item" })
+                }
+            }
+        </div>
+    </div>
+</div>
+

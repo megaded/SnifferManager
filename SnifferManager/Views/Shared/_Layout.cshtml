@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Sniffer Manager</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jqueryui")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/jquery-3.1.1.js")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
@@ -22,13 +23,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Check", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Configuration", "About", "Home")</li>
-                    <li>@Html.ActionLink("Article", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("LogMessageTypes", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Params", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("QueryLog", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Shop", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Чеки", "Index", "Check")</li>
+                    <li>@Html.ActionLink("Товары", "Index", "Article")</li>
+                    <li>@Html.ActionLink("Арендаторы", "Index", "Location")</li>                                  
+                    <li>@Html.ActionLink("Типы логов", "Index", "LogMessageTypes")</li>
+                    <li>@Html.ActionLink("Параметры", "Index", "Params")</li>
+                    <li>@Html.ActionLink("Журнал логов", "Index", "QueryLog")</li>
+                    <li>@Html.ActionLink("Логи", "Index", "Log")</li>                   
+                    <li>@Html.ActionLink("Настройки", "Index", "Configuration")</li> 
+                    <li>@Html.ActionLink("Статус", "Index", "Configuration")</li> 
                 </ul>
             </div>
         </div>
@@ -37,12 +40,13 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - e.kidyaev@watcomdc.ru</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
     @RenderSection("scripts", required: false)
 </body>
 </html>

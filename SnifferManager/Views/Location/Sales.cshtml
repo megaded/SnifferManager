@@ -1,0 +1,22 @@
+﻿@model List<SnifferManager.Models.ViewModel.SalesViewModel>
+
+<table class="table"> 
+    <thead>
+        <tr>
+            <th>Дата</th>
+            <th>Сумма</th>
+            <th>Чеки</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var sale in Model)
+{
+    <tr>
+        <td>@sale.Date</td>
+        <td>@sale.Total</td>
+        <td>@sale.CountCheck</td>
+    </tr>
+}
+ </tbody>
+</table>
+

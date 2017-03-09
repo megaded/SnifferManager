@@ -1,0 +1,33 @@
+﻿@model PagedList.IPagedList<SnifferManager.Models.ViewModel.ArticleViewModel>
+@using PagedList.Mvc;
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ArtNumber</th>
+                <th>Номер чека</th>
+                <th>Группа</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Общая цена</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var article in Model)
+           {
+               <tr>
+                   <td>@article.id</td>
+                   <td>@article.ArtNumber</td>
+                   <td>@article.CheckId</td>
+                   <td>@article.Group</td>
+                   <td>@article.Name</td>
+                   <td>@article.Price</td>
+                   <td>@article.Count</td>
+                   <td>@article.TotalPrice</td>
+               </tr>
+           }
+        </tbody>
+    </table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
