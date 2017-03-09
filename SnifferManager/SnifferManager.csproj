@@ -171,6 +171,8 @@
     <Compile Include="Models\ViewModel\ConfigurationViewModel.cs" />
     <Compile Include="Models\ViewModel\DateSalesViewModel.cs" />
     <Compile Include="Models\ViewModel\LocationDetailViewModel.cs" />
+    <Compile Include="Models\ViewModel\LogMessageTypesViewModel.cs" />
+    <Compile Include="Models\ViewModel\ParamsViewModel.cs" />
     <Compile Include="Models\ViewModel\SalesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -277,12 +279,12 @@
     <Content Include="Views\Location\Detail.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Location\Sales.cshtml" />
+    <Content Include="Views\LogMessageTypes\Index.cshtml" />
+    <Content Include="Views\Params\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\LogMessageTypes\" />
     <Folder Include="Views\Log\" />
-    <Folder Include="Views\Params\" />
     <Folder Include="Views\QueryLog\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>

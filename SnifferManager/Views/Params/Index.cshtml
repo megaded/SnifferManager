@@ -1,0 +1,49 @@
+﻿@model PagedList.IPagedList<SnifferManager.Models.ViewModel.ParamsViewModel>
+@using PagedList.Mvc;
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Арендатор</td>
+            <td>Команда</td>
+            <td>Серийник</td>
+            <td>Получено</td>
+            <td>Номер пакета</td>
+            <td>Размер пакета</td>
+            <td>Cmd</td>
+            <td>cmd_request</td>
+            <td>crc16</td>
+            <td>Обработано</td>
+            <td>Серверное время</td>
+            <td>Системное время</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var param in Model)
+        {
+            <tr>
+                <td>@param.id</td>
+                <td>@param.LocatioName</td>
+                <td>
+                    @foreach (var command in param.command_body)
+                {
+                        @command
+                    }
+                </td>
+                <td>@param.serial_number</td>
+                <td>@param.receive_date</td>
+                <td>@param.packet_number</td>
+                <td>@param.packet_size</td>
+                <td>@param.cmd</td>
+                <td>@param.cmd_request</td>
+                <td>@param.crc16</td>
+                <td>@param.parsed</td>
+                <td>@param.server_time</td>
+                <td>@param.system_time</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
