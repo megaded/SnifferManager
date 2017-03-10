@@ -26,6 +26,7 @@ namespace SnifferManager.Controllers
             {
                 id=x.id,
                 LocatioName=y.Description,
+                SerialNumber=x.SerialNumber,
                 ReceiveDate=x.ReceiveDate,
                 LogType=x.LogType,
                 Message=x.Message,

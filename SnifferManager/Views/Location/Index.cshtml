@@ -1,25 +1,40 @@
-﻿@model List<SnifferManager.Models.ViewModel.ConfigurationViewModel>
+﻿@model List<SnifferManager.Models.ViewModel.LocationDetailViewModel>
 
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        Список арендаторов
-    </div>
+<div class="panel panel-primary">    
+        <div class="panel-heading">
+            <h3 class="panel-title">Арендаторы</h3>
+        </div>    
     <div class="panel-body">
 
-        <div class="list-group">
-
-            @foreach (var location in Model)
-            {
-                if (String.IsNullOrEmpty(location.Name))
+        <table class="table">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>Всего чеков</td>
+                    <td>Последний чек</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var location in Model)
                 {
-                    @Html.ActionLink("Название отсутствует"+" "+location.SerialNumber , "Detail", new { id = location.SerialNumber }, new { @class = "list-group-item" })
+                    <tr>
+                        @if (String.IsNullOrEmpty(location.LocationName))
+                        {
+                        <td> <strong> @Html.ActionLink("Название отсутствует" + " " + location.LocatioId, "Detail", new { id = location.LocatioId }, new { @class = "list-group-item" })</strong>
+                        </td>
+                        }
+                        else
+                        {
+                        <td><strong> @Html.ActionLink(location.LocationName + " " + location.LocatioId, "Detail", new { id = location.LocatioId }, new { @class = "list-group-item" })</strong> </td>
+                        }
+                        
+                        <td>@location.CheckCount</td>
+                        <td>@location.LastCheckDate</td>
+                    </tr>
                 }
-                else
-                {
-                    @Html.ActionLink(location.Name+" "+ location.SerialNumber, "Detail", new { id = location.SerialNumber }, new { @class = "list-group-item" })
-                }
-            }
-        </div>
+            </tbody>
+            
+        </table>
     </div>
 </div>
 

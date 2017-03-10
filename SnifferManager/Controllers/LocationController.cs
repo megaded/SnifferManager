@@ -18,12 +18,23 @@ namespace SnifferManager.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var config = context.Configurations.Select(x => new ConfigurationViewModel
+            var config = context.Configurations.ToList();
+            var checks = context.Checks.GroupBy(x => x.SerialNumber).Select(x => new { id = x.Key, count = x.Count(), lastdate = x.Max(z => z.CheckDate) }).ToList();
+            var model = config.GroupJoin(checks, x => x.SerialNumber, y => y.id, (x, y) => y.Select(k => new LocationDetailViewModel
             {
-                Name = x.Description,
-                SerialNumber = x.SerialNumber
-            }).ToList();
-            return View(config);
+                LocatioId = x.SerialNumber,
+                LocationName = x.Description ?? "Название не указано",
+                CheckCount = k.count,
+                LastCheckDate =((DateTime) k.lastdate).ToString("dd.MM.yyyy")
+            }).DefaultIfEmpty(new LocationDetailViewModel
+            {
+                LocatioId =x.SerialNumber,
+                LocationName = x.Description??"Название не указано",
+                CheckCount=0,
+                LastCheckDate=""
+
+            })).SelectMany(g=>g).ToList();
+            return View(model);
         }
 
         [HttpGet]
@@ -37,23 +48,6 @@ namespace SnifferManager.Controllers
             var model = new LocationDetailViewModel();
             model.LocatioId = entity.SerialNumber;
             model.LocationName = entity.Description;
-            model.CheckCount = context.Checks.Where(x => x.SerialNumber == id).Count();
-            model.LastCheckDate = (DateTime)context.Checks.Max(x => x.CheckDate);
-            model.Last10Checks = context.Checks.OrderByDescending(x => x.CheckDate).Take(10).Select(x => new CheckViewModel
-            {
-                Change = x.Change,
-                CheckDate = x.CheckDate,
-                DocNumber = x.DocNumber,
-                DocType = x.DocType,
-                Payment = x.Payment,
-                Total = x.Total,
-                CheckNumber = x.CheckNumber,
-                id = x.id,
-                SerialNumber = x.SerialNumber,
-                ShopId = x.ShopId,
-                ReceiveDate = x.ReceiveDate,
-                CheckText = x.CheckText
-            }).ToList();
             return View(model);
         }
 

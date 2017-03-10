@@ -16,8 +16,6 @@
 <div class="panel panel-primary">
     <div class="panel-heading">@Model.LocationName - @Model.LocatioId</div>
     <div class="panel-body">
-        <p>Все чеков: @Model.CheckCount</p>
-        <p>Последний чек: @Model.LastCheckDate</p>
         @using (Ajax.BeginForm("Sales",new AjaxOptions { UpdateTargetId="sales"}))
         {
             @Html.HiddenFor(x=>x.LocatioId)

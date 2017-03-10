@@ -11,8 +11,7 @@ namespace SnifferManager.Models.ViewModel
         public string LocationName { get; set; }
         public int LocatioId { get; set; }
         public int CheckCount { get; set; }
-        public DateTime LastCheckDate { get; set; }
-        public List<CheckViewModel> Last10Checks { get; set; }
+        public string LastCheckDate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
