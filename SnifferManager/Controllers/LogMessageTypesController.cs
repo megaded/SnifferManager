@@ -14,6 +14,8 @@ namespace SnifferManager.Controllers
         {
             context = new DeviceDbContext();
         }
+
+        [HttpGet]
         public ActionResult Index()
         {
             var model = context.Logmessagetypes.Select(x => new LogMessageTypesViewModel

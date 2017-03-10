@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using SnifferManager.Models.ViewModel;
 using PagedList.Mvc;
 using PagedList;
+using SnifferManager.Models;
+using System.Text;
 
 namespace SnifferManager.Controllers
 {
@@ -25,8 +27,8 @@ namespace SnifferManager.Controllers
             var model = param.Join(config, x => x.serial_number, y => y.SerialNumber.ToString(), (x, y) => new ParamsViewModel
             {
                 id = x.id,
-                LocatioName=y.Description,
-                command_body = x.command_body,
+                LocatioName = y.Description,
+                command_body = Encoding.UTF8.GetString(x.command_body),
                 serial_number = x.serial_number,
                 receive_date = x.receive_date,
                 packet_number = x.packet_number,

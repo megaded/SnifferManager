@@ -1,0 +1,32 @@
+﻿@model PagedList.IPagedList<SnifferManager.Models.ViewModel.QueryLogViewModel>
+@using PagedList.Mvc;
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Арендатор</th>
+            <th>SerialNumber</th>
+            <th>Получен</th>
+            <th>Тип</th>
+            <th>Серверное время</th>
+            <th>Системное время</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var querylog in Model)
+        {
+            <tr>
+                <td>@querylog.id</td>
+                <td>@querylog.LocatioName</td>
+                <td>@querylog.SerialNumber</td>
+                <td>@querylog.ReceiveDate</td>
+                <td>@querylog.QueryType</td>
+                <td>@querylog.ServerTime</td>
+                <td>@querylog.SystemTime</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
