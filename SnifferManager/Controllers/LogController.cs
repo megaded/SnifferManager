@@ -37,5 +37,17 @@ namespace SnifferManager.Controllers
             var onePageOfLog = model.ToPagedList(pageNumber, 100);
             return View(onePageOfLog);
         }
+
+        [HttpGet]
+        public ActionResult Location(int id)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Logs(DateTime BeginDate, DateTime EndDate, int LocatioId)
+        {
+            return PartialView();
+        }
     }
 }

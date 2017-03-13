@@ -44,5 +44,17 @@ namespace SnifferManager.Controllers
             var onePageOfParams = model.ToPagedList(pageNumber, 100);
             return View(onePageOfParams);
         }
+
+        [HttpGet]
+        public ActionResult Location(int id)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Params(DateTime BeginDate, DateTime EndDate, int LocatioId)
+        {
+            return PartialView();
+        }
     }
 }

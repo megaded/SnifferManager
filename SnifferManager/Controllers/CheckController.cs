@@ -48,10 +48,10 @@ namespace SnifferManager.Controllers
             var article = context.Articles.GroupBy(x => x.CheckId).ToList();
             var check = context.Checks.Where(x => x.SerialNumber == id).ToList();
             var model = check.Join(article, x => x.id, y => y.Key, (x, y) => new CheckLocationViewModel
-            { CheckNumber = (int)x.CheckNumber,
-                Price = (float)y.Sum(z => z.TotalPrice),
+            { CheckNumber = x.CheckNumber,
+                Price = y.Sum(z => z.TotalPrice),
                 Position = y.Count(),
-                Date =((DateTime) x.CheckDate).ToString("dd.mm.yyyy")
+                Date =((DateTime) x.CheckDate).ToString("dd.MM.yyyy")
             }).ToList();
             return View(model);
         }
@@ -66,14 +66,20 @@ namespace SnifferManager.Controllers
         [HttpGet]
         public ActionResult CheckDate(DateTime checkdate, int id)
         {
-            var checks = context.Checks.Where(x => x.SerialNumber == id).ToList().Where(x => ((DateTime) x.CheckDate).ToString("dd.MM.yyyy")==checkdate.ToString("dd.MM.yyyy"));
+            var checks = context.Checks.Where(x => x.SerialNumber == id).ToList().Where(x => x.CheckDate!=null && ((DateTime) x.CheckDate).ToString("dd.MM.yyyy")==checkdate.ToString("dd.MM.yyyy"));
             var model = checks.GroupJoin(context.Articles, x => x.id, y => y.CheckId, (x, y) => new CheckLocationViewModel
             {
-                CheckNumber = (int)x.CheckNumber,
-                Price = (float)y.Sum(z => z.Price),
+                CheckNumber = x.CheckNumber,
+                Price = y.Sum(z => z.Price),
                 Position = y.Count(),
             }).ToList();
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Checks(DateTime BeginDate, DateTime EndDate, int LocatioId)
+        {
+            return PartialView();
         }
 
     }

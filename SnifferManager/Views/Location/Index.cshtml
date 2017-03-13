@@ -11,10 +11,10 @@
                 <tr>
                    
                     <td></td>
-                    <td>Продажи</td>
-                    <td>Чеки</td>
                     <td>Всего чеков</td>
                     <td>Последний чек</td>
+                 
+                   
                     
                 </tr>
             </thead>
@@ -32,10 +32,12 @@
                         {
                             <td><strong> @Html.ActionLink(location.LocationName + " " + location.LocatioId, "Detail", new { id = location.LocatioId }, new { @class = "list-group-item" })</strong> </td>
                         }   
+                        <td>@location.CheckCount</td>
+                        <td>@location.LastCheckDate</td>  
                         <td>@Html.ActionLink("Продажи","Detail",new { id=location.LocatioId})</td>
                         <td>@Html.ActionLink("Чеки","Location","Check",new { id=location.LocatioId},null)</td>                                        
-                        <td>@location.CheckCount</td>
-                        <td>@location.LastCheckDate</td>                       
+                        <td>@Html.ActionLink("Логи","Location","Log",new { id=location.LocatioId})</td>    
+                        <td>@Html.ActionLink("Данные","Location","Params",new { id=location.LocatioId})</td>          
                     </tr>
                 }
             </tbody>
