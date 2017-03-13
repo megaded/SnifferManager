@@ -3,8 +3,8 @@
 <script type="text/javascript">
 
      $(document).ready(function () {
-         $('input[type=datetime]').datepicker({
-             dateFormat: "dd/M/yy",
+         $('input[type=text]').datepicker({
+             dateFormat: "dd-mm-yy",
              changeMonth: true,
              changeYear: true,
              yearRange: "-60:+0"
@@ -19,8 +19,8 @@
         @using (Ajax.BeginForm("Sales",new AjaxOptions { UpdateTargetId="sales"}))
         {
             @Html.HiddenFor(x=>x.LocatioId)
-         @Html.EditorFor(model => model.BeginDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Начало периода" } })  
-        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Конец периода" } }) 
+         @Html.EditorFor(model => model.BeginDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Начало периода",type="text" } })  
+        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Конец периода",type="text" } }) 
         <input type="submit" value="Выбрать"/>
         }
        <div id="sales">

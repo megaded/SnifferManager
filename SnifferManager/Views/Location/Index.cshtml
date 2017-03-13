@@ -9,27 +9,33 @@
         <table class="table">
             <thead>
                 <tr>
+                   
                     <td></td>
+                    <td>Продажи</td>
+                    <td>Чеки</td>
                     <td>Всего чеков</td>
                     <td>Последний чек</td>
+                    
                 </tr>
             </thead>
             <tbody>
                 @foreach (var location in Model)
                 {
-                    <tr>
+                    <tr>   
                         @if (String.IsNullOrEmpty(location.LocationName))
                         {
-                        <td> <strong> @Html.ActionLink("Название отсутствует" + " " + location.LocatioId, "Detail", new { id = location.LocatioId }, new { @class = "list-group-item" })</strong>
-                        </td>
+                            <td>
+                                <strong> @Html.ActionLink("Название отсутствует" + " " + location.LocatioId, "Detail", new { id = location.LocatioId }, new { @class = "list-group-item" })</strong>
+                            </td>
                         }
                         else
                         {
-                        <td><strong> @Html.ActionLink(location.LocationName + " " + location.LocatioId, "Detail", new { id = location.LocatioId }, new { @class = "list-group-item" })</strong> </td>
-                        }
-                        
+                            <td><strong> @Html.ActionLink(location.LocationName + " " + location.LocatioId, "Detail", new { id = location.LocatioId }, new { @class = "list-group-item" })</strong> </td>
+                        }   
+                        <td>@Html.ActionLink("Продажи","Detail",new { id=location.LocatioId})</td>
+                        <td>@Html.ActionLink("Чеки","Location","Check",new { id=location.LocatioId},null)</td>                                        
                         <td>@location.CheckCount</td>
-                        <td>@location.LastCheckDate</td>
+                        <td>@location.LastCheckDate</td>                       
                     </tr>
                 }
             </tbody>

@@ -15,17 +15,20 @@ namespace SnifferManager.Controllers
         {
             context = new DeviceDbContext();
         }
+
         [HttpGet]           
         public ActionResult Index()
         {
             var model = context.Configurations.ToList();
             return View(model);
         }
+
         [HttpGet]          
         public ActionResult Add()
         {
             return View();
         }
+
         [HttpPost]        
         public ActionResult Create(string name)
         {
@@ -36,6 +39,40 @@ namespace SnifferManager.Controllers
             context.Configurations.Add(entity);
             context.SaveChanges();
             return PartialView("SerialNumber", entity.SerialNumber.ToString());
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var entity = context.Configurations.Find(id);
+            if (entity == null)
+            {
+                return HttpNotFound();
+            }
+            var model = new ConfigurationViewModel();
+            model.SerialNumber = entity.SerialNumber;
+            model.Name = entity.Description;
+            model.WorkMode = entity.WorkMode;
+            model.KkmTypeString = entity.KkmTypeString;
+            model.BaudRate = entity.BaudRate;
+            model.Parity = entity.Parity;
+            model.StopBits = entity.StopBits;
+            model.DataBits = entity.DataBits;
+            model.PrinterPort = entity.PrinterPort;
+            model.CashPort = entity.CashPort;
+            model.UsbDeviceName = entity.UsbDeviceName;
+            model.UsbManufacturerName = entity.UsbManufacturerName;
+            model.UsbKey = entity.UsbKey;
+            model.EnableComSniffer = entity.EnableComSniffer;
+            model.EnableUsbSniffer = entity.EnableUsbSniffer;
+            model.CashDeskNumber = entity.CashDeskNumber;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit()
+        {
+            return View();
         }
     }
 }

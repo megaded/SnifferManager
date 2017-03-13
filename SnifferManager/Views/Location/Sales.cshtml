@@ -1,4 +1,4 @@
-﻿@model List<SnifferManager.Models.ViewModel.SalesViewModel>
+﻿@model SnifferManager.Models.ViewModel.SalesViewModel
 
 <table class="table"> 
     <thead>
@@ -9,14 +9,21 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var sale in Model)
+@foreach (var sale in Model.Sales)
 {
     <tr>
-        <td>@sale.Date</td>
+        <td>@Html.ActionLink(sale.Date.ToString("dd.MM.yyyy"), "CheckDate", "Check",new { @checkdate=sale.Date.ToString("yyyy.MM.dd"),@id=Model.LocationId},null)</td>
         <td>@sale.Total</td>
         <td>@sale.CountCheck</td>
     </tr>
 }
  </tbody>
+    <tfoot>
+        <tr>
+            <td><strong>Итого</strong></td>
+            <td><strong>@Model.TotalPrice</strong> </td>
+            <td><strong>@Model.TotalCheck</strong> </td>
+        </tr>
+    </tfoot>
 </table>
 

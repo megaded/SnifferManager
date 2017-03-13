@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SnifferManager.Models.ViewModel;
 
+
 namespace SnifferManager.Controllers
 {
     public class LocationController : Controller
@@ -55,12 +56,16 @@ namespace SnifferManager.Controllers
         public ActionResult Sales(DateTime BeginDate, DateTime EndDate,int LocatioId)
         {
             var sale = context.Checks.ToList().Where(y => y.SerialNumber == LocatioId && y.CheckDate.HasValue && (y.CheckDate>= BeginDate && y.CheckDate<=EndDate)).GroupBy(x => x.CheckDate.Value.ToString("dd.MM.yyyy"));
-            var model = sale.Select(x => new SalesViewModel()
+            var model = new SalesViewModel();
+            model.LocationId = LocatioId;
+             model.Sales = sale.Select(x => new SalesDateViewModel()
             {
-                Date = x.Key,
+                Date = DateTime.Parse( x.Key),
                 Total = (float)x.Sum(m => m.Total),
                 CountCheck = x.Count()
             }).ToList();
+            model.TotalPrice = model.Sales.Sum(x => x.Total);
+            model.TotalCheck = model.Sales.Sum(x => x.CountCheck);
             return PartialView(model);
         }
     }

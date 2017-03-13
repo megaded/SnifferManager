@@ -1,0 +1,22 @@
+﻿@model List<SnifferManager.Articles>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Название</td>
+                <td>Цена</td>
+                <td>Количество</td>
+                <td>Итог</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in Model)
+            {
+                <tr>
+                    <td>@article.Name</td>
+                    <td>@article.Price</td>
+                    <td>@article.Count</td>
+                    <td>@article.TotalPrice</td>
+                </tr>
+            }
+        </tbody>
+    </table>

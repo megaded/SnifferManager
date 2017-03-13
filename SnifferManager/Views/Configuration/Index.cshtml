@@ -4,8 +4,9 @@
     <table class="table">
         <thead>
             <tr>
-                <td>SerialNumber</td>
-                <td>Description</td>
+                <th>SerialNumber</th>
+                <th>Description</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -14,6 +15,7 @@
                 <tr>
                     <td>@config.SerialNumber</td>
                     <td>@config.Description</td>
+                    <td>@Html.ActionLink("Редактировать","Edit",new { id=config.SerialNumber})</td>
                 </tr>
             }
         </tbody>

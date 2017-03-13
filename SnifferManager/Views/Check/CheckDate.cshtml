@@ -1,0 +1,21 @@
+﻿@model List<SnifferManager.Models.ViewModel.CheckLocationViewModel>
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>Чек</th>
+            <th>Позиций</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var check in Model)
+        {
+            <tr>
+                <td>@check.CheckNumber</td>
+                <td>@check.Position</td>
+                <td>@check.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -168,6 +168,8 @@
     <Compile Include="Models\Entity\QueryLog.cs" />
     <Compile Include="Models\Entity\Shop.cs" />
     <Compile Include="Models\ViewModel\ArticleViewModel.cs" />
+    <Compile Include="Models\ViewModel\CheckDetailViewModel.cs" />
+    <Compile Include="Models\ViewModel\CheckLocationViewModel.cs" />
     <Compile Include="Models\ViewModel\CheckViewModel.cs" />
     <Compile Include="Models\ViewModel\ConfigurationViewModel.cs" />
     <Compile Include="Models\ViewModel\DateSalesViewModel.cs" />
@@ -176,6 +178,7 @@
     <Compile Include="Models\ViewModel\LogViewModel.cs" />
     <Compile Include="Models\ViewModel\ParamsViewModel.cs" />
     <Compile Include="Models\ViewModel\QueryLogViewModel.cs" />
+    <Compile Include="Models\ViewModel\SalesDateViewModel.cs" />
     <Compile Include="Models\ViewModel\SalesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -283,6 +286,9 @@
     <Content Include="Views\Params\Index.cshtml" />
     <Content Include="Views\QueryLog\Index.cshtml" />
     <Content Include="Views\Log\Index.cshtml" />
+    <Content Include="Views\Check\Location.cshtml" />
+    <Content Include="Views\Check\Detail.cshtml" />
+    <Content Include="Views\Check\CheckDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
