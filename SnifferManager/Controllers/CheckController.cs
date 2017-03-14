@@ -116,6 +116,5 @@ namespace SnifferManager.Controllers
             ViewBag.Title = "Чеки";
             return PartialView(model);
         }
-
     }
 }
