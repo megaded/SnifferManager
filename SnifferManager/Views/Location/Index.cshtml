@@ -2,20 +2,16 @@
 
 <div class="panel panel-info">    
         <div class="panel-heading">
-            <h3 class="panel-title">Арендаторы</h3>
+            <h3 class="panel-title"><strong>Арендаторы</strong></h3>
         </div>    
     <div class="panel-body">
 
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
-                <tr>
-                   
-                    <td></td>
-                    <td>Всего чеков</td>
-                    <td>Последний чек</td>
-                 
-                   
-                    
+                <tr>                   
+                    <th></th>
+                    <th>Всего чеков</th>
+                    <th>Последний чек</th>                                                       
                 </tr>
             </thead>
             <tbody>
@@ -34,10 +30,10 @@
                         }   
                         <td>@location.CheckCount</td>
                         <td>@location.LastCheckDate</td>  
-                        <td>@Html.ActionLink("Продажи","Detail",new { id=location.LocationId})</td>
-                        <td>@Html.ActionLink("Чеки","Location","Check",new { id=location.LocationId},null)</td>                                        
-                        <td>@Html.ActionLink("Логи","Location","Log",new { id=location.LocationId},null)</td>    
-                        <td>@Html.ActionLink("Данные","Location","Params",new { id=location.LocationId},null)</td>          
+                        <td>@Html.ActionLink("Продажи","Detail",new { id=location.LocationId},new { @class= "btn btn-primary" })</td>
+                        <td>@Html.ActionLink("Чеки","Location","Check",new { id=location.LocationId},new { @class= "btn btn-success" })</td>                                        
+                        <td>@Html.ActionLink("Логи","Location","Log",new { id=location.LocationId}, new { @class = "btn btn-info" })</td>    
+                        <td>@Html.ActionLink("Данные","Location","Params",new { id=location.LocationId}, new { @class = "btn btn-warning" })</td>          
                     </tr>
                 }
             </tbody>

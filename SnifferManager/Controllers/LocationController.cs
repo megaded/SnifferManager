@@ -57,6 +57,7 @@ namespace SnifferManager.Controllers
         [HttpPost]
         public ActionResult Sales(DateTime BeginDate, DateTime EndDate,int LocationId)
         {
+            EndDate = EndDate.AddDays(1);
             var sale = context.Checks.ToList().Where(y => y.SerialNumber == LocationId && y.CheckDate.HasValue && (y.CheckDate>= BeginDate && y.CheckDate<=EndDate)).GroupBy(x => x.CheckDate.Value.ToString("dd.MM.yyyy"));
             var model = new SalesViewModel();
             model.LocationId = LocationId;

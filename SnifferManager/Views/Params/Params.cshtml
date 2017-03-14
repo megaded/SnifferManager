@@ -1,0 +1,39 @@
+﻿@model List<SnifferManager.Models.ViewModel.ParamsViewModel>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Команда</th>
+            <th>Получено</th>
+            <th>Номер пакета</th>
+            <th>Размер пакета</th>
+            <th>Cmd</th>
+            <th>cmd_request</th>
+            <th>crc16</th>
+            <th>Обработано</th>
+            <th>Серверное время</th>
+            <th>Системное время</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var param in Model)
+        {
+            <tr>
+                <td>@param.id</td>
+                <td>
+                    @Html.TextArea("command", param.command_body)
+                </td>
+                <td>@param.receive_date</td>
+                <td>@param.packet_number</td>
+                <td>@param.packet_size</td>
+                <td>@param.cmd</td>
+                <td>@param.cmd_request</td>
+                <td>@param.crc16</td>
+                <td>@param.parsed</td>
+                <td>@param.server_time</td>
+                <td>@param.system_time</td>
+            </tr>
+        }
+    </tbody>
+</table>

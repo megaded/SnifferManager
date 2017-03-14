@@ -293,6 +293,8 @@
     <Content Include="Views\Check\Checks.cshtml" />
     <Content Include="Views\Log\Location.cshtml" />
     <Content Include="Views\Log\Logs.cshtml" />
+    <Content Include="Views\Params\Params.cshtml" />
+    <Content Include="Views\Params\Location.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

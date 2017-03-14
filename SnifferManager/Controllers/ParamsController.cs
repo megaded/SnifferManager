@@ -49,13 +49,40 @@ namespace SnifferManager.Controllers
         [HttpGet]
         public ActionResult Location(int id)
         {
-            return View();
+            var entity = context.Configurations.Find(id);
+            if (entity == null)
+            {
+                return HttpNotFound("Указаный ID не существует.");
+            }
+            var model = new LocationDetailViewModel();
+            model.LocationId = entity.SerialNumber;
+            model.LocationName = entity.Description;
+            ViewBag.Title = entity.Description;
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult Params(DateTime BeginDate, DateTime EndDate, int LocationId)
         {
-            return PartialView();
+            EndDate = EndDate.AddDays(1);
+            var id = LocationId.ToString();
+            var model = context.Params.Where(x => x.serial_number == id && x.server_time >= BeginDate && x.server_time <= EndDate).ToList().
+                Select(x => new ParamsViewModel
+                {
+                    id=x.id,
+                    command_body= Encoding.UTF8.GetString(x.command_body),
+                    receive_date=x.receive_date,
+                    packet_number=x.packet_number,
+                    packet_size=x.packet_size,
+                    cmd=x.cmd,
+                    cmd_request=x.cmd_request,
+                    crc16=x.crc16,
+                    parsed=x.parsed,
+                    server_time=x.server_time,
+                    system_time=x.system_time
+                }).ToList();
+
+            return PartialView(model);
         }
     }
 }

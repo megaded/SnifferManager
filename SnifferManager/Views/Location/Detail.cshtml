@@ -16,14 +16,15 @@
 <div class="panel panel-primary">
     <div class="panel-heading">@Model.LocationName - @Model.LocationId</div>
     <div class="panel-body">
-        @using (Ajax.BeginForm("Sales",new AjaxOptions { UpdateTargetId="sales"}))
+        @using (Ajax.BeginForm("Sales",new AjaxOptions { UpdateTargetId="sales", LoadingElementDuration=1000,LoadingElementId="load"}))
         {
             @Html.HiddenFor(x=>x.LocationId)
          @Html.EditorFor(model => model.BeginDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Начало периода",type="text" } })  
         @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Конец периода",type="text" } }) 
-        <input type="submit" value="Выбрать"/>
+        <input type="submit" value="Выбрать" class="btn btn-primary"/>
         }
        <div id="sales">
+           <h3 id="load" style="display:none">Загрузка...</h3>
        </div>
     </div>
 </div>

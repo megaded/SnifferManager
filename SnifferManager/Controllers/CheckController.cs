@@ -46,23 +46,25 @@ namespace SnifferManager.Controllers
         [HttpGet]
         public ActionResult Location(int id)
         {
-            var article = context.Articles.GroupBy(x => x.CheckId).ToList();
-            var check = context.Checks.Where(x => x.SerialNumber == id).ToList();           
-            var model = check.Join(article, x => x.id, y => y.Key, (x, y) => new CheckLocationViewModel
+            var entity = context.Configurations.Find(id);
+            if (entity == null)
             {
-                CheckId = x.id,
-                CheckNumber = x.CheckNumber.ToString(),
-                Price = x.Total,
-                Position = y.Count(),
-                Date = x.CheckDate.HasValue? x.CheckDate.Value.ToString("dd.MM.yyyy"):""
-            }).ToList();
-            ViewBag.Title = "Чеки";
+                return HttpNotFound("Указаный ID не существует.");
+            }
+            var model = new LocationDetailViewModel();
+            model.LocationId = entity.SerialNumber;
+            model.LocationName = entity.Description;
+            ViewBag.Title = entity.Description;
             return View(model);
         }
 
         [HttpGet]
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Location");
+            }
             var model = context.Articles.Where(x => x.CheckId == id).ToList().Select(k=>
             new ArticleCheckViewModel
             {
@@ -71,14 +73,14 @@ namespace SnifferManager.Controllers
                 Price=k.Price,
                 TotalPrice=k.TotalPrice
             }).ToList();
-            ViewBag.Title = "Информация о чеке";
+            ViewBag.Title = $"Чек номер {id}";
             return View(model);
         }
 
         [HttpGet]
         public ActionResult CheckDate(DateTime checkdate, int id)
         {
-            var checks = context.Checks.Where(x => x.SerialNumber == id).ToList().Where(x => ((DateTime)x.CheckDate).ToString("dd.MM.yyyy") == checkdate.ToString("dd.MM.yyyy"));
+            var checks = context.Checks.Where(x => x.SerialNumber == id&& x.CheckDate.HasValue).ToList().Where(x => ((DateTime)x.CheckDate).ToString("dd.MM.yyyy") == checkdate.ToString("dd.MM.yyyy"));
             var model = checks.GroupJoin(context.Articles, x => x.id, y => y.CheckId, (x, y) => new CheckLocationViewModel
             {
                 CheckNumber = x.CheckNumber.HasValue ? x.CheckNumber.Value.ToString() : "Нет номера чека",
@@ -98,9 +100,21 @@ namespace SnifferManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult Checks(DateTime BeginDate, DateTime EndDate, int LocatioId)
+        public ActionResult Checks(DateTime BeginDate, DateTime EndDate, int LocationId)
         {
-            return PartialView();
+            EndDate = EndDate.AddDays(1);
+            var check = context.Checks.Where(x => x.SerialNumber == LocationId && x.CheckDate.HasValue && (x.CheckDate >= BeginDate && x.CheckDate <= EndDate)).ToList();
+            var article = context.Articles.GroupBy(x => x.CheckId).ToList();
+            var model = check.GroupJoin(article, x => x.id, y => y.Key, (x, y) => new CheckLocationViewModel
+            {
+                CheckId = x.id,
+                CheckNumber = x.CheckNumber.ToString(),
+                Price = x.Total,
+                Position = y.Count(),
+                Date = x.CheckDate.HasValue ? x.CheckDate.Value.ToString("dd.MM.yyyy") : ""
+            }).ToList();
+            ViewBag.Title = "Чеки";
+            return PartialView(model);
         }
 
     }
