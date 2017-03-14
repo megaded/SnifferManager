@@ -1,11 +1,12 @@
 ﻿@model List<SnifferManager.Models.ViewModel.CheckLocationViewModel>
-    
+
 <table class="table">
     <thead>
         <tr>
+            <th>Номер чека</th>
+            <th>Сумма</th>
             <th>Чек</th>
-            <th>Позиций</th>
-            <th>Цена</th>
+            <th>Текст чека</th>
         </tr>
     </thead>
     <tbody>
@@ -13,8 +14,37 @@
         {
             <tr>
                 <td>@check.CheckNumber</td>
-                <td>@check.Position</td>
                 <td>@check.Price</td>
+                <td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="col-md-3">Название</th>
+                                <th class="col-md-3">Количество</th>
+                                <th class="col-md-3">Цена</th>
+                                <th class="col-md-3">Общая сумма</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var article in check.Articles)
+                          {
+                        <tr>
+                            <td>@article.Name</td>
+                            <td>@article.Count</td>
+                            <td>@article.Price</td>
+                            <td>@article.TotalPrice</td>
+                        </tr>
+                          }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Итого</td>
+                                <td>@check.Articles.Sum(x=>x.TotalPrice)</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </td>
+                <td>@check.CheckText</td>
             </tr>
         }
     </tbody>

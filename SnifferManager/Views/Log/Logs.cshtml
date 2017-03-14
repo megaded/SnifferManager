@@ -1,0 +1,26 @@
+﻿@model List<SnifferManager.Models.ViewModel.LogViewModel>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Получен</th>
+                <th>Тип лога</th>
+                <th>Сообщение</th>
+                <th>Системное время</th>
+                <th>Серверное время</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Model)
+            {
+                <tr>
+                    <td>@log.id</td>
+                    <td>@log.ReceiveDate</td>
+                    <td>@log.LogType</td>
+                    <td>@log.Message</td>
+                    <td>@log.SystemTime</td>
+                    <td>@log.ServerTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>

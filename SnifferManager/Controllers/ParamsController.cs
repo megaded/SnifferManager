@@ -42,6 +42,7 @@ namespace SnifferManager.Controllers
             }).ToList();
             var pageNumber = page ?? 1;
             var onePageOfParams = model.ToPagedList(pageNumber, 100);
+            ViewBag.Title = "Данные";
             return View(onePageOfParams);
         }
 
@@ -51,8 +52,8 @@ namespace SnifferManager.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Params(DateTime BeginDate, DateTime EndDate, int LocatioId)
+        [HttpPost]
+        public ActionResult Params(DateTime BeginDate, DateTime EndDate, int LocationId)
         {
             return PartialView();
         }

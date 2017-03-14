@@ -41,13 +41,32 @@ namespace SnifferManager.Controllers
         [HttpGet]
         public ActionResult Location(int id)
         {
-            return View();
+            var entity = context.Configurations.Find(id);
+            if (entity == null)
+            {
+                return HttpNotFound();
+            }
+            var model = new LocationDetailViewModel();
+            model.LocationId = entity.SerialNumber;
+            model.LocationName = entity.Description;
+            return View(model);
         }
 
-        [HttpGet]
-        public ActionResult Logs(DateTime BeginDate, DateTime EndDate, int LocatioId)
+        [HttpPost]
+        public ActionResult Logs(DateTime BeginDate, DateTime EndDate, int LocationId)
         {
-            return PartialView();
+            var id = LocationId.ToString();
+            var model = context.Logs.Where(x => x.SerialNumber == id&&x.ServerTime.HasValue &&(x.ServerTime>=BeginDate&&x.ServerTime<=EndDate)).
+                Select(y=>new LogViewModel
+                {
+                    id=y.id,
+                    ReceiveDate=y.ReceiveDate,
+                    LogType=y.LogType,
+                    Message=y.Message,
+                    SystemTime=y.SystemTime,
+                    ServerTime=y.ServerTime
+                }).ToList();
+            return PartialView(model);
         }
     }
 }

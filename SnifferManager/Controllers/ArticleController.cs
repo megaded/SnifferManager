@@ -33,6 +33,7 @@ namespace SnifferManager.Controllers
             }).ToList();
             var pageNumber = page ?? 1;
             var onePageOfArticle = model.ToPagedList(pageNumber, 100);
+            ViewBag.Title = "Товары";
             return View(onePageOfArticle);
         }
     }

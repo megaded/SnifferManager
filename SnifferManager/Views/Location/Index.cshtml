@@ -1,6 +1,6 @@
 ﻿@model List<SnifferManager.Models.ViewModel.LocationDetailViewModel>
 
-<div class="panel panel-primary">    
+<div class="panel panel-info">    
         <div class="panel-heading">
             <h3 class="panel-title">Арендаторы</h3>
         </div>    
@@ -25,19 +25,19 @@
                         @if (String.IsNullOrEmpty(location.LocationName))
                         {
                             <td>
-                                <strong> @Html.ActionLink("Название отсутствует" + " " + location.LocatioId, "Detail", new { id = location.LocatioId }, new { @class = "list-group-item" })</strong>
+                                <strong> @Html.ActionLink("Название отсутствует" + " " + location.LocationId, "Detail", new { id = location.LocationId }, new { @class = "list-group-item" })</strong>
                             </td>
                         }
                         else
                         {
-                            <td><strong> @Html.ActionLink(location.LocationName + " " + location.LocatioId, "Detail", new { id = location.LocatioId }, new { @class = "list-group-item" })</strong> </td>
+                            <td><strong> @Html.ActionLink(location.LocationName + " " + location.LocationId, "Detail", new { id = location.LocationId }, new { @class = "list-group-item" })</strong> </td>
                         }   
                         <td>@location.CheckCount</td>
                         <td>@location.LastCheckDate</td>  
-                        <td>@Html.ActionLink("Продажи","Detail",new { id=location.LocatioId})</td>
-                        <td>@Html.ActionLink("Чеки","Location","Check",new { id=location.LocatioId},null)</td>                                        
-                        <td>@Html.ActionLink("Логи","Location","Log",new { id=location.LocatioId})</td>    
-                        <td>@Html.ActionLink("Данные","Location","Params",new { id=location.LocatioId})</td>          
+                        <td>@Html.ActionLink("Продажи","Detail",new { id=location.LocationId})</td>
+                        <td>@Html.ActionLink("Чеки","Location","Check",new { id=location.LocationId},null)</td>                                        
+                        <td>@Html.ActionLink("Логи","Location","Log",new { id=location.LocationId},null)</td>    
+                        <td>@Html.ActionLink("Данные","Location","Params",new { id=location.LocationId},null)</td>          
                     </tr>
                 }
             </tbody>

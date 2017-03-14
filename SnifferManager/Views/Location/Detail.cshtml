@@ -14,11 +14,11 @@
 </script>  
 
 <div class="panel panel-primary">
-    <div class="panel-heading">@Model.LocationName - @Model.LocatioId</div>
+    <div class="panel-heading">@Model.LocationName - @Model.LocationId</div>
     <div class="panel-body">
         @using (Ajax.BeginForm("Sales",new AjaxOptions { UpdateTargetId="sales"}))
         {
-            @Html.HiddenFor(x=>x.LocatioId)
+            @Html.HiddenFor(x=>x.LocationId)
          @Html.EditorFor(model => model.BeginDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Начало периода",type="text" } })  
         @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Конец периода",type="text" } }) 
         <input type="submit" value="Выбрать"/>

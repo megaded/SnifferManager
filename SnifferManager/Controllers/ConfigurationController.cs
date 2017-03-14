@@ -20,12 +20,14 @@ namespace SnifferManager.Controllers
         public ActionResult Index()
         {
             var model = context.Configurations.ToList();
+            ViewBag.Title = "Настройки";
             return View(model);
         }
 
         [HttpGet]          
         public ActionResult Add()
         {
+            ViewBag.Title = "Новый арендатор";
             return View();
         }
 
@@ -66,6 +68,7 @@ namespace SnifferManager.Controllers
             model.EnableComSniffer = entity.EnableComSniffer;
             model.EnableUsbSniffer = entity.EnableUsbSniffer;
             model.CashDeskNumber = entity.CashDeskNumber;
+            ViewBag.Title = $"Редактировать {model.Name} {model.SerialNumber}";
             return View(model);
         }
 

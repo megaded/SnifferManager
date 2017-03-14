@@ -9,7 +9,7 @@ namespace SnifferManager.Models.ViewModel
     public class LocationDetailViewModel
     {
         public string LocationName { get; set; }
-        public int LocatioId { get; set; }
+        public int LocationId { get; set; }
         public int CheckCount { get; set; }
         public string LastCheckDate { get; set; }
 

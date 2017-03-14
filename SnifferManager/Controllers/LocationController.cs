@@ -23,18 +23,19 @@ namespace SnifferManager.Controllers
             var checks = context.Checks.GroupBy(x => x.SerialNumber).Select(x => new { id = x.Key, count = x.Count(), lastdate = x.Max(z => z.CheckDate) }).ToList();
             var model = config.GroupJoin(checks, x => x.SerialNumber, y => y.id, (x, y) => y.Select(k => new LocationDetailViewModel
             {
-                LocatioId = x.SerialNumber,
+                LocationId = x.SerialNumber,
                 LocationName = x.Description ?? "Название не указано",
                 CheckCount = k.count,
                 LastCheckDate =((DateTime) k.lastdate).ToString("dd.MM.yyyy")
             }).DefaultIfEmpty(new LocationDetailViewModel
             {
-                LocatioId =x.SerialNumber,
+                LocationId =x.SerialNumber,
                 LocationName = x.Description??"Название не указано",
                 CheckCount=0,
                 LastCheckDate=""
 
             })).SelectMany(g=>g).ToList();
+            ViewBag.Title = "Арендаторы";
             return View(model);
         }
 
@@ -47,17 +48,18 @@ namespace SnifferManager.Controllers
                 return HttpNotFound("Указаный ID не существует.");
             }
             var model = new LocationDetailViewModel();
-            model.LocatioId = entity.SerialNumber;
+            model.LocationId = entity.SerialNumber;
             model.LocationName = entity.Description;
+            ViewBag.Title = entity.Description;
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Sales(DateTime BeginDate, DateTime EndDate,int LocatioId)
+        public ActionResult Sales(DateTime BeginDate, DateTime EndDate,int LocationId)
         {
-            var sale = context.Checks.ToList().Where(y => y.SerialNumber == LocatioId && y.CheckDate.HasValue && (y.CheckDate>= BeginDate && y.CheckDate<=EndDate)).GroupBy(x => x.CheckDate.Value.ToString("dd.MM.yyyy"));
+            var sale = context.Checks.ToList().Where(y => y.SerialNumber == LocationId && y.CheckDate.HasValue && (y.CheckDate>= BeginDate && y.CheckDate<=EndDate)).GroupBy(x => x.CheckDate.Value.ToString("dd.MM.yyyy"));
             var model = new SalesViewModel();
-            model.LocationId = LocatioId;
+            model.LocationId = LocationId;
              model.Sales = sale.Select(x => new SalesDateViewModel()
             {
                 Date = DateTime.Parse( x.Key),

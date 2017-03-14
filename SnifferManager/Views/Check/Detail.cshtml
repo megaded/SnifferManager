@@ -1,11 +1,11 @@
-﻿@model List<SnifferManager.Articles>
+﻿@model List<SnifferManager.Models.ViewModel.ArticleCheckViewModel>
     <table class="table">
         <thead>
             <tr>
-                <td>Название</td>
-                <td>Цена</td>
-                <td>Количество</td>
-                <td>Итог</td>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Итог</th>
             </tr>
         </thead>
         <tbody>
@@ -19,4 +19,10 @@
                 </tr>
             }
         </tbody>
+        <tfoot>
+            <tr>
+                <td><strong>Итого</strong> </td>
+                <td><strong>@Model.Sum(x => x.TotalPrice)</strong> </td>
+            </tr>
+        </tfoot>
     </table>
