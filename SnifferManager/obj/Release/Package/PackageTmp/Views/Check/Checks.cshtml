@@ -1,0 +1,38 @@
+﻿@model List<SnifferManager.Models.ViewModel.CheckLocationViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Номер чека</th>
+            <th>Дата</th>
+            <th>Позиций</th>
+            <th>Сумма</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var check in Model)
+        {
+            <tr>
+                @if (String.IsNullOrEmpty(check.CheckNumber))
+                {
+                    <td>@Html.ActionLink("--", "Detail", new { id = check.CheckId },new {@class="btn btn-info" }) </td>
+                }
+                else
+                {
+                    <td>@Html.ActionLink(check.CheckNumber, "Detail", new { id = check.CheckId }, new { @class = "btn btn-info" }) </td>
+                }
+                <td>@check.Date</td>
+                <td>@check.Position</td>
+                <td>@check.Price</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Итоги</td>
+            <td></td>
+            <td>@Model.Sum(x=>x.Position)</td>
+            <td>@Model.Sum(x=>x.Price)</td>
+        </tr>
+    </tfoot>
+</table>

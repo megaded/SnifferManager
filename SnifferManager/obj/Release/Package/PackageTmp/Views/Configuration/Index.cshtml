@@ -1,0 +1,22 @@
+﻿@model List<Configuration>
+
+    @Html.ActionLink("Добавить арендатора","Add",null,new { @class= "btn btn-success" })
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SerialNumber</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var config in Model)
+            {
+                <tr>
+                    <td>@config.SerialNumber</td>
+                    <td>@config.Description</td>
+                    <td>@Html.ActionLink("Редактировать","Edit",new { id=config.SerialNumber})</td>
+                </tr>
+            }
+        </tbody>
+    </table>

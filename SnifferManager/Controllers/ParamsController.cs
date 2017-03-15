@@ -81,7 +81,6 @@ namespace SnifferManager.Controllers
                     server_time=x.server_time,
                     system_time=x.system_time
                 }).ToList();
-
             return PartialView(model);
         }
     }

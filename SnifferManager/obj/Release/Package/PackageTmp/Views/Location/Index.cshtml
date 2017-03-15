@@ -1,0 +1,44 @@
+﻿@model List<SnifferManager.Models.ViewModel.LocationDetailViewModel>
+
+<div class="panel panel-info">    
+        <div class="panel-heading">
+            <h3 class="panel-title"><strong>Арендаторы</strong></h3>
+        </div>    
+    <div class="panel-body">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>                   
+                    <th></th>
+                    <th>Всего чеков</th>
+                    <th>Последний чек</th>                                                       
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var location in Model)
+                {
+                    <tr>   
+                        @if (String.IsNullOrEmpty(location.LocationName))
+                        {
+                            <td>
+                                <strong> @Html.ActionLink("Название отсутствует" + " " + location.LocationId, "Detail", new { id = location.LocationId }, new { @class = "list-group-item" })</strong>
+                            </td>
+                        }
+                        else
+                        {
+                            <td><strong> @Html.ActionLink(location.LocationName + " " + location.LocationId, "Detail", new { id = location.LocationId }, new { @class = "list-group-item" })</strong> </td>
+                        }   
+                        <td>@location.CheckCount</td>
+                        <td>@location.LastCheckDate</td>  
+                        <td>@Html.ActionLink("Продажи","Detail",new { id=location.LocationId},new { @class= "btn btn-primary" })</td>
+                        <td>@Html.ActionLink("Чеки","Location","Check",new { id=location.LocationId},new { @class= "btn btn-success" })</td>                                        
+                        <td>@Html.ActionLink("Логи","Location","Log",new { id=location.LocationId}, new { @class = "btn btn-info" })</td>    
+                        <td>@Html.ActionLink("Данные","Location","Params",new { id=location.LocationId}, new { @class = "btn btn-warning" })</td>          
+                    </tr>
+                }
+            </tbody>
+            
+        </table>
+    </div>
+</div>
+

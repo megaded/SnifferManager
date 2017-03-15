@@ -1,0 +1,14 @@
+﻿@model string
+
+
+@using (Ajax.BeginForm("Create", new AjaxOptions {  UpdateTargetId="snumber"}))
+{
+    <div class="form-group form-group-lg">
+        @Html.Label("Название", new { @class = "col-sm-2 control-label" })
+        @Html.TextBox("name", null,new { @class = "form-control", @placeholder = "Введите название арендатора" })
+        <input type="submit" value="Добавить" />
+    </div>
+}
+<div id="snumber">
+
+</div>
