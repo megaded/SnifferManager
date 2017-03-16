@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SnifferManager.Models.ViewModel
 {
@@ -11,6 +12,7 @@ namespace SnifferManager.Models.ViewModel
         public int SerialNumber { get; set; }
         public bool WorkMode { get; set; }
         public string KkmTypeString { get; set; }
+        public SelectList KKmCodeSelectList { get; set; }
         public int BaudRate { get; set; }
         public byte Parity { get; set; }
         public byte StopBits { get; set; }
@@ -22,6 +24,6 @@ namespace SnifferManager.Models.ViewModel
         public string UsbKey { get; set; }
         public bool? EnableComSniffer { get; set; }
         public bool? EnableUsbSniffer { get; set; }
-        public long CashDeskNumber { get; set; }
+        public long CashDeskNumber { get; set; }      
     }
 }
