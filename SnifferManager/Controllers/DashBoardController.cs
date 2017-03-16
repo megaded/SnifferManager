@@ -26,15 +26,15 @@ namespace SnifferManager.Controllers
                 .Select(x => x.ToString("dd.MM.yyy")).ToList();
             var sales = context.Checks.Where(y => y.CheckDate.HasValue && (y.CheckDate >= BeginDate && y.CheckDate <= EndDate)).ToList();
             var locationSales = sales.GroupBy(x => new { location = x.SerialNumber, checkdate = x.CheckDate.Value.ToString("dd.MM.yyyy") });
-            var datetoCheckDate = dates.GroupJoin(locationSales, x => x, y => y.Key.checkdate, (x, y) =>
+         /*   var datetoCheckDate = dates.GroupJoin(locationSales, x => x, y => y.Key.checkdate, (x, y) =>
               new LocationSalesDate
               {
                   LocationId =(int) y.FirstOrDefault().Key.location,
                   Sales=y.SelectMany(x=>x.Sum())
-            });
+            }); */
             var model = new DashBoardLocationViewModel();
             model.Dates = dates;
-            model.LocationSales = locationSales;
+
             return View(model);
         }
     }

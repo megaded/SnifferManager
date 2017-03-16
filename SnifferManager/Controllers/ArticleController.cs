@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using SnifferManager.Models.ViewModel;
 using PagedList;
 
+
 namespace SnifferManager.Controllers
 {
     public class ArticleController : Controller
