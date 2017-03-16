@@ -149,6 +149,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CheckController.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
+    <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\LogMessageTypesController.cs" />
@@ -167,12 +168,16 @@
     <Compile Include="Models\Entity\Params.cs" />
     <Compile Include="Models\Entity\QueryLog.cs" />
     <Compile Include="Models\Entity\Shop.cs" />
+    <Compile Include="Models\KKMCode.cs" />
     <Compile Include="Models\ViewModel\ArticleCheckViewModel.cs" />
     <Compile Include="Models\ViewModel\ArticleViewModel.cs" />
     <Compile Include="Models\ViewModel\CheckDetailViewModel.cs" />
     <Compile Include="Models\ViewModel\CheckLocationViewModel.cs" />
     <Compile Include="Models\ViewModel\CheckViewModel.cs" />
     <Compile Include="Models\ViewModel\ConfigurationViewModel.cs" />
+    <Compile Include="Models\ViewModel\DashBoardLocationViewModel.cs" />
+    <Compile Include="Models\ViewModel\DashBoardSaleViewModel.cs" />
+    <Compile Include="Models\ViewModel\LocationSalesDate.cs" />
     <Compile Include="Models\ViewModel\DateSalesViewModel.cs" />
     <Compile Include="Models\ViewModel\LocationDetailViewModel.cs" />
     <Compile Include="Models\ViewModel\LogMessageTypesViewModel.cs" />
@@ -296,6 +301,8 @@
     <Content Include="Views\Log\Logs.cshtml" />
     <Content Include="Views\Params\Params.cshtml" />
     <Content Include="Views\Params\Location.cshtml" />
+    <Content Include="Views\Configuration\Edit.cshtml" />
+    <Content Include="Views\DashBoard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

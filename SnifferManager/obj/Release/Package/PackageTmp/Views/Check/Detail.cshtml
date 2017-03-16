@@ -1,0 +1,30 @@
+﻿@model List<SnifferManager.Models.ViewModel.ArticleCheckViewModel>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Итог</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in Model)
+            {
+                <tr>
+                    <td>@article.Name</td>
+                    <td>@article.Price</td>
+                    <td>@article.Count</td>
+                    <td>@article.TotalPrice</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><strong>Итого</strong> </td>
+                <td></td>
+                <td></td>
+                <td><strong>@Model.Sum(x => x.TotalPrice)</strong> </td>
+            </tr>
+        </tfoot>
+    </table>

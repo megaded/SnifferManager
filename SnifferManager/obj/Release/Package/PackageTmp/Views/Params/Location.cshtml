@@ -1,0 +1,30 @@
+﻿@model SnifferManager.Models.ViewModel.LocationDetailViewModel
+
+<script type="text/javascript">
+
+     $(document).ready(function () {
+         $('input[type=text]').datepicker({
+             dateFormat: "dd.mm.yy",
+             changeMonth: true,
+             changeYear: true,
+             yearRange: "-60:+0"
+         });
+
+     });
+</script>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">@Model.LocationName - @Model.LocationId</div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("Params", new AjaxOptions { UpdateTargetId = "params", LoadingElementId = "load", LoadingElementDuration = 1000 }))
+        {
+            @Html.HiddenFor(x => x.LocationId)
+            @Html.EditorFor(model => model.BeginDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Начало периода", type = "text" } })
+            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Конец периода", type = "text" } })
+            <input type="submit" value="Выбрать" />
+        }
+        <div id="params">
+            <h3 id="load" style="display:none">Загрузка...</h3>
+        </div>
+    </div>
+</div>

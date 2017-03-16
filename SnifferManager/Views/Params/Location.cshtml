@@ -4,7 +4,7 @@
 
      $(document).ready(function () {
          $('input[type=text]').datepicker({
-             dateFormat: "dd-mm-yy",
+             dateFormat: "dd.mm.yy",
              changeMonth: true,
              changeYear: true,
              yearRange: "-60:+0"
@@ -23,8 +23,9 @@
             @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Конец периода", type = "text" } })
             <input type="submit" value="Выбрать" />
         }
+        <h3 id="load" style="display:none">Загрузка...</h3>
         <div id="params">
-            <h3 id="load" style="display:none">Загрузка...</h3>
+           
         </div>
     </div>
 </div>

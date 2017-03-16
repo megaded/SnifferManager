@@ -1,0 +1,29 @@
+﻿@model SnifferManager.Models.ViewModel.SalesViewModel
+
+<table class="table table-bordered"> 
+    <thead>
+        <tr>
+            <th>Дата</th>
+            <th>Сумма</th>
+            <th>Чеки</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var sale in Model.Sales)
+{
+    <tr>
+        <td>@Html.ActionLink(sale.Date.ToString("dd.MM.yyyy"), "CheckDate", "Check",new { @checkdate=sale.Date.ToString("yyyy.MM.dd"),@id=Model.LocationId},new { @class= "btn btn-info" })</td>
+        <td>@sale.Total</td>
+        <td>@sale.CountCheck</td>
+    </tr>
+}
+ </tbody>
+    <tfoot>
+        <tr>
+            <td><strong>Итого</strong></td>
+            <td><strong>@Model.TotalPrice</strong> </td>
+            <td><strong>@Model.TotalCheck</strong> </td>
+        </tr>
+    </tfoot>
+</table>
+

@@ -1,0 +1,113 @@
+﻿@model SnifferManager.Models.ViewModel.ConfigurationViewModel
+
+@using (Html.BeginForm("Edit", "Configuration", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x=>x.SerialNumber)
+        @Html.LabelFor(x => x.SerialNumber, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.Label(Model.SerialNumber.ToString(), new { @class = "col-sm-2 control-label" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.KkmTypeString, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.DropDownListFor(x => x.KkmTypeString,Model.KKmCodeSelectList, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.WorkMode, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.WorkMode, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.BaudRate, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.BaudRate, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Parity, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.Parity, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.StopBits, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.StopBits, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.DataBits, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.DataBits, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.PrinterPort, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.PrinterPort, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.CashPort, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.CashPort, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.UsbDeviceName, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.UsbDeviceName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+       @Html.LabelFor(x => x.UsbManufacturerName, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+          @Html.TextBoxFor(x => x.UsbManufacturerName, new { @class = "form-control" })  
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.UsbKey, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.UsbKey, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.EnableComSniffer, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+@Html.TextBoxFor(x => x.EnableComSniffer, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.EnableUsbSniffer, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+           @Html.TextBoxFor(x => x.EnableUsbSniffer, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.CashDeskNumber, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(x => x.CashDeskNumber, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+    </div>}

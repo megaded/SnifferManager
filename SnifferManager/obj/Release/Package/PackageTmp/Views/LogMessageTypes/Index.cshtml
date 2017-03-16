@@ -1,0 +1,19 @@
+﻿@model List<SnifferManager.Models.ViewModel.LogMessageTypesViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Описание</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var logtype in Model)
+        {
+            <tr>
+                <td>@logtype.id</td>
+                <td>@logtype.Description</td>
+            </tr>
+        }      
+    </tbody>
+</table>

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SnifferManager.Models.ViewModel;
+using SnifferManager.Models;
+using System.Data.Entity;
 
 namespace SnifferManager.Controllers
 {
@@ -52,6 +54,13 @@ namespace SnifferManager.Controllers
                 return HttpNotFound();
             }
             var model = new ConfigurationViewModel();
+            var listEnum = Enum.GetValues(typeof(KKMCode.KKM)).Cast<KKMCode.KKM>().
+                Select(x => new 
+                {
+                    Text = x.ToString(),
+                    Value=((int)x).ToString()
+                });
+            model.KKmCodeSelectList = new SelectList(listEnum,"Value","Text", entity.KkmTypeString);
             model.SerialNumber = entity.SerialNumber;
             model.Name = entity.Description;
             model.WorkMode = entity.WorkMode;
@@ -73,9 +82,27 @@ namespace SnifferManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit()
+        public ActionResult Edit(ConfigurationViewModel model)
         {
-            return View();
+            var entity = context.Configurations.Find(model.SerialNumber);
+            entity.Description = model.Name;
+            entity.BaudRate = model.BaudRate;
+            entity.CashDeskNumber = model.CashDeskNumber;
+            entity.CashPort = model.CashPort;
+            entity.DataBits = model.DataBits;
+            entity.EnableComSniffer = model.EnableComSniffer;
+            entity.EnableUsbSniffer = model.EnableUsbSniffer;
+            entity.KkmTypeString = model.KkmTypeString;
+            entity.Parity = model.Parity;
+            entity.PrinterPort = model.PrinterPort;
+            entity.StopBits = model.StopBits;
+            entity.UsbDeviceName = model.UsbDeviceName;
+            entity.UsbKey = model.UsbKey;
+            entity.UsbManufacturerName = model.UsbManufacturerName;
+            entity.WorkMode = model.WorkMode;
+            context.Entry(entity).State = EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
