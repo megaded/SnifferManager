@@ -1,0 +1,34 @@
+﻿@model SnifferManager.Models.ViewModel.DashBoardLocationViewModel
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Арендатор</th>
+                @foreach (var date in Model.Dates)
+                {
+                    <th>@date</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var location in Model.LocationSales)
+           {
+               <tr>
+                   <td>
+                       @location.LocatioName @location.LocationId
+                   </td>
+                   @foreach (var sales in location.Sales)
+                   {
+                       if (sales.Total == 0)
+                       {
+                        <td class="danger">@sales.Total</td>
+                       }
+                       else
+                       {
+                        <td class="success">@sales.Total</td>
+                       }
+                   }
+               </tr>
+           }
+        </tbody>
+    </table>

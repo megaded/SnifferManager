@@ -1,0 +1,10 @@
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\bin\Release\SnifferManagerDomain.dll.config
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\bin\Release\SnifferManagerDomain.dll
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\bin\Release\SnifferManagerDomain.pdb
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\bin\Release\EntityFramework.dll
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\bin\Release\EntityFramework.xml
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\obj\Release\SnifferManagerDomain.csprojResolveAssemblyReference.cache
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\obj\Release\SnifferManagerDomain.dll
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManagerDomain\obj\Release\SnifferManagerDomain.pdb

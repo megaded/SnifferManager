@@ -8,6 +8,7 @@ namespace SnifferManager.Models.ViewModel
     public class LocationSalesDate
     {
         public int LocationId { get; set; }
+        public string LocatioName { get; set; }
         public List<DashBoardSaleViewModel> Sales { get; set; }       
         public LocationSalesDate()
         {

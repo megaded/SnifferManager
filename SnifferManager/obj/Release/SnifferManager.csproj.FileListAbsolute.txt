@@ -48,3 +48,5 @@ C:\Users\IEUser\documents\visual studio 2015\Projects\SnifferManager\SnifferMana
 C:\Users\IEUser\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\obj\Release\SnifferManager.csprojResolveAssemblyReference.cache
 C:\Users\IEUser\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\obj\Release\SnifferManager.dll
 C:\Users\IEUser\documents\visual studio 2015\Projects\SnifferManager\SnifferManager\obj\Release\SnifferManager.pdb
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManager\bin\SnifferManagerDomain.dll
+C:\Users\IEUser\Documents\Visual Studio 2015\Projects\SnifferManager\SnifferManager\bin\SnifferManagerDomain.pdb

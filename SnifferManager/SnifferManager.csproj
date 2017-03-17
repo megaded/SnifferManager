@@ -175,6 +175,8 @@
     <Compile Include="Models\ViewModel\QueryLogViewModel.cs" />
     <Compile Include="Models\ViewModel\SalesDateViewModel.cs" />
     <Compile Include="Models\ViewModel\SalesViewModel.cs" />
+    <Compile Include="Models\ViewModel\StatusFullViewModel.cs" />
+    <Compile Include="Models\ViewModel\StatusViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +293,7 @@
     <Content Include="Views\Params\Params.cshtml" />
     <Content Include="Views\Params\Location.cshtml" />
     <Content Include="Views\Configuration\Edit.cshtml" />
+    <Content Include="Views\DashBoard\DashBoard.cshtml" />
     <Content Include="Views\DashBoard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
