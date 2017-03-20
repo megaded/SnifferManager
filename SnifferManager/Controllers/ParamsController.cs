@@ -11,6 +11,7 @@ using System.Text;
 
 namespace SnifferManager.Controllers
 {
+    [Error]
     public class ParamsController : Controller
     {
         DeviceDbContext context;

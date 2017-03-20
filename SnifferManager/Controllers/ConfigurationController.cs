@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace SnifferManager.Controllers
 {
-    
+    [Error]
     public class ConfigurationController : Controller
     {
         DeviceDbContext context;

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SnifferManager.Models.ViewModel;
+using SnifferManager.Models;
 using PagedList;
 
 namespace SnifferManager.Controllers
 {
 
+    [Error]
     public class CheckController : Controller
     {
         DeviceDbContext context;

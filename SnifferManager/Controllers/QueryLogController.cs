@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using SnifferManager.Models.ViewModel;
+using SnifferManager.Models;
 
 namespace SnifferManager.Controllers
 {
+    [Error]
     public class QueryLogController : Controller
     {
         DeviceDbContext context;
