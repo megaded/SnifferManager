@@ -60,6 +60,8 @@
     <Compile Include="Model\Entity\QueryLog.cs" />
     <Compile Include="Model\Entity\Shop.cs" />
     <Compile Include="Model\KKMCode.cs" />
+    <Compile Include="Model\Reports\LocationChecksReport.cs" />
+    <Compile Include="Model\Reports\LocationSalesReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
